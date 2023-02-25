@@ -9,39 +9,229 @@
         <link rel="stylesheet" href="/proyecto-photon/static/js/creaElementos.js">
 </head>
 
-<body>
-  <header class="text-center text-white masthead" style="background: url('bg-masthead.jpg')no-repeat center center;background-size: cover;">
-    <div class="body-search">
-      <div class="overlay">
-        <img src="static/img/buscador.jpg" alt="" width="100%" height="98%">
-      </div>
-      <div class="container" style="position: absolute; top: 100px; left: 100px;">
-        <div class="row">
-          <div class="col-xl-9 mx-auto position-relative">
-            <h1 class="mb-5">Bienvenido a AJOLOTLOL</h1>
-          </div>
-          <div class="conteiner-cuerpo">
-              <div id="container-respuestas">
-                <div class="card">
-                    <div class="card-body">
-                      This is some text within a card body.
-                    </div>
-                  </div>
-              </div>
-              <div class="container-anuncios">
-
-              </div>
-          </div>
-        </div>
-      </div>
+<body class = "grid-container">
+  <header class="header">
+    <div class="overlay">
+      <img src="static/img/buscador.jpg" alt="buscador-ajolotlol" width="100%" height="120px">
     </div>
-    </header>
-    <footer class="bg-light footer">
-        <div class="container" style="left: 20x;">
-            <p class="text-muted small mb-4 mb-lg-0" style="text-align: center;">© Todos los derechos reservados por EDCE 2022</p>
-        </div>
-    </footer>
+  </header>
+  <aside class="sidebar">
+    <div class="div-anuncios" ></div>
+  </aside>
+  <article class="main">
+    <div class="div-respuestas" ></div>
+  </article>
+  <footer class="footer">
+    <div class="container-footer">
+        <p class=" text-footer" >© Todos los derechos reservados por EDCE 2022</p>
+    </div>
+</footer>
 </body>
+
+<style>
+  html {height : 100%; }
+body { min-height : 100%;  }
+
+.grid-container > *  { border: 4px;  text-align: center; }
+
+
+/* Tablet 2 cols */
+@media (min-width: 800px)  {
+.grid-container { background-color: #ffffff; display : grid; gap: 15px;
+       grid-template-columns: auto 300px ;
+   grid-template-rows: 130px auto 50px; 
+   grid-template-areas: 
+        "header header"   
+        "main sidebar"  
+        "footer footer"
+       }  
+}
+
+/* Desktop 3 cols*/
+@media (min-width: 900px)  {
+.grid-container { background-color: #ffffff;display : grid; gap: 15px;
+       grid-template : 
+       "header header header" 120px   
+        "main main    sidebar"    auto 
+        "footer footer footer" 100px  /    /* ancho 3 cols */
+        200px auto  400px; 
+       }  
+}
+
+.header { grid-area: header; background-color : #ffffff; }
+.sidebar{ grid-area: sidebar; background-color : #ffffff; }
+.main{ grid-area: main; background-color : #ffffff }
+.footer { grid-area: footer; background-color: rgb(140, 137, 137); }
+.text-footer{text-align: center;  font-size: 18px;}
+
+h1{color: rgb(126, 128, 130); font-size: 25px; margin: 0.9%;}
+h4{color: rgb(82, 84, 84); text-align: left; font-size: 17px;}
+p{color: rgb(82, 84, 84); text-align: left;}
+.div-url{ text-align: left; font-size: 15px;}
+.p-fecha{font-size: 13px; text-align: right;}
+.p-contenido{font-size: 18px;}
+.p-tiempo{font-size: 15px;}
+.div-respuesta{background-color: rgba(225, 243, 252, 0.817); padding: 2%; margin: 1%;}
+.div-img{width: 40%; display: inline-block; padding: 8px; }
+.divInterno{width: 60%; display: inline-block; padding: 3%;}
+.divAnuncio{margin: 1%; background-color: rgb(244, 241, 241); display: flex;}
+.tienda{font-size: 13px;}
+</style>
+
+<script>
+/*-------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------*/
+fetch(`devuelveAnuncios`)
+  .then((response) => response.json())
+  .then((devuelveAnuncios) => {
+    fetch(`obtenerImg`)
+      .then((response) => response.json())
+      .then((imgProductos) => {
+        creaAnuncio(devuelveAnuncios,imgProductos);
+      });
+  });
+
+var count = 0;
+function creaAnuncio(devuelveAnuncios,imgProductos) {
+  
+  var $divAnuncios = document.querySelector(".div-anuncios");
+  
+  Object.entries(devuelveAnuncios).forEach((datos) => {
+
+    var productosImg = Object.values(imgProductos);
+
+      var datosAnuncios = Object.values(datos[1]);
+
+      var div = document.createElement("div");
+      var divInterno = document.createElement("div");
+      var divImg = document.createElement("div");
+      var precio = document.createElement("p");
+      var verMas = document.createElement("p");
+      var nombre = document.createElement("h4");
+      var href = document.createElement("a");
+      var img = document.createElement("img");
+
+      divImg.setAttribute("class","div-img");
+      divInterno.setAttribute("class","divInterno");
+      div.setAttribute("class","divAnuncio click");
+      href.setAttribute("class","tienda"); 
+      div.setAttribute("id",`${datos[0]}`); 
+      div.setAttribute("name",`${datos[1].nombre}`); 
+
+
+      const nombreProd = document.createTextNode(datosAnuncios[0]);
+      nombre.appendChild(nombreProd);
+      const precioProd = document.createTextNode(` A solo: $${datosAnuncios[1]}.00`);
+      precio.appendChild(precioProd);
+      const urlProd = document.createTextNode(datosAnuncios[2]);
+      href.appendChild(urlProd);
+      
+      const verMasDiv = document.createTextNode("   Ver más... ");
+      href.appendChild(verMasDiv);
+
+      divInterno.appendChild(nombre); 
+      divInterno.appendChild(precio); 
+      img.setAttribute("alt", "producto");
+      img.style.height = "95%";
+      img.style.width = "80%";
+      img.setAttribute("src", `${productosImg[count]}`);
+      href.setAttribute("href", datosAnuncios[2]);
+      href.setAttribute("target","_blank"); 
+      divInterno.appendChild(verMas); 
+      divInterno.appendChild(href); 
+      divImg.appendChild(img); 
+      div.appendChild(divImg); 
+      div.appendChild(divInterno); 
+      $divAnuncios.appendChild(div); 
+      count = count + 1;
+    });
+
+  }
+/*-------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------*/
+fetch(`devuelveRespuestas`)
+.then((response) => response.json())
+.then((devuelveRespuestas) => {
+  creaRespuesta(devuelveRespuestas);
+});
+
+function creaRespuesta(devuelveRespuestas) {
+  var $divRespuestas = document.querySelector(".div-respuestas");
+  
+  Object.entries(devuelveRespuestas).forEach((datos) => {
+
+    var datosRespuestas = Object.values(datos[1]);
+
+    var div = document.createElement("div");
+    var contenido = document.createElement("p");
+    var tiempo = document.createElement("p");
+    var fecha = document.createElement("p");
+    var verMas = document.createElement("p");
+    var titulo = document.createElement("h1");
+    var href = document.createElement("a");
+    
+    fecha.setAttribute("class","p-fecha");
+    contenido.setAttribute("class","p-contenido");
+    tiempo.setAttribute("class","p-tiempo");
+    div.setAttribute("class","div-respuesta");
+    href.setAttribute("class","div-url");
+    verMas.setAttribute("class","div-url");
+    
+    const contenidoDiv = document.createTextNode(datosRespuestas[2]);
+    contenido.appendChild(contenidoDiv);
+    const tiempoDiv = document.createTextNode(`Tiempo de lectura del articulo: ${datosRespuestas[4]} min`);
+    tiempo.appendChild(tiempoDiv);
+    const fechaDiv = document.createTextNode(datosRespuestas[3]);
+    fecha.appendChild(fechaDiv);
+    const tituloDiv = document.createTextNode(datosRespuestas[0]);
+    titulo.appendChild(tituloDiv);
+    const urlDiv = document.createTextNode(datosRespuestas[1]);
+    href.appendChild(urlDiv);
+    const verMasDiv = document.createTextNode("   Ver más... ");
+    href.appendChild(verMasDiv);
+    
+    div.appendChild(titulo); 
+    div.appendChild(fecha); 
+    div.appendChild(contenido); 
+    div.appendChild(tiempo);
+    href.setAttribute("href", datosRespuestas[1]);
+    href.setAttribute("target","_blank"); 
+    div.appendChild(verMas); 
+    div.appendChild(href); 
+    $divRespuestas.appendChild(div); 
+  });
+  
+}
+
+/*-------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------*/
+setTimeout(function(){
+document.querySelectorAll(".click").forEach(anuncio => {
+  anuncio.addEventListener("click", e => {
+    console.log(anuncio)
+    let id = parseInt(anuncio.getAttribute('id')) + 1;
+    let name = anuncio.getAttribute("name");
+    console.log("Anuncio Click: Anuncio con id "+id+" y nombre "+name);
+    $.ajax({
+      type: "GET",
+      url: '/resultados/',
+      data: {
+          'id': id
+      },
+      dataType: "json",
+      success: function (data) {
+          // any process in data
+          alert("successfull")
+      },
+      failure: function () {
+          alert("failure");
+      }
+    });
+  });
+});
+}, 200);
+
+</script>
 
 
 </html>

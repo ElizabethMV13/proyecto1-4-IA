@@ -1,0 +1,11 @@
+.body-search {
+  position: relative !important;
+}
+
+.card-body{
+  width: 180px;
+}
+
+.href{
+  display: none;
+}

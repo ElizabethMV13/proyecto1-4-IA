@@ -2,39 +2,79 @@
 .container{
     margin-left: 40px;
     margin-right: 40px;
-    display: inline-block;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .vision{
-    background-color: rgb(14, 149, 202);
-    color: white;
+    background-color: #00C6CF;
+    color: #000000;
     padding: 20px;
     border-radius: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
+    width: 800px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 40px #00C6CF;
 }
 
 .eslogan{
-    background-color: rgb(14, 149, 202);
-    color: white;
+    background-color: #00C6CF;
+    color: #000000;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 40px;
     width: 500px;
-    
+    border: 2px solid #fff;
+    box-shadow: 0 0 40px #00C6CF;
+}
+
+/*Iconos*/
+
+.pasos{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: center;
+    padding-bottom: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /*Textos*/
 
 .eslogans{
-    font-size: 20px;
+    font-size: 30px;
     margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+.eslogans_2{
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.title_vis{
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: fantasy;
+}
+
+.vision_text{
+    margin-bottom: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+li{
+    list-style: none;
+}
 /*Botones*/
 .test{
     background-color: #ffd000;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     transition-duration: 0.3s;
     border: none;
     padding: 4px 20px;
@@ -56,4 +96,22 @@ button{
     background-color: white;
     color: #ffd000;
     border: 1px solid #ffd000;
+}
+
+/*Imágenes*/
+
+.teclado{
+    width: 50px;
+}
+
+.enviar{
+    width: 50px;
+}
+
+.crear{
+    width: 50px;
+}
+
+.flecha{
+    width: 50px;
 }

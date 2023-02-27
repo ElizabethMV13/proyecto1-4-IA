@@ -1,0 +1,59 @@
+/*Cuerpo*/
+.container{
+    margin-left: 40px;
+    margin-right: 40px;
+    display: inline-block;
+    text-align: center;
+}
+
+.vision{
+    background-color: rgb(14, 149, 202);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.eslogan{
+    background-color: rgb(14, 149, 202);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    width: 500px;
+    
+}
+
+/*Textos*/
+
+.eslogans{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/*Botones*/
+.test{
+    background-color: #ffd000;
+    color: rgb(255, 255, 255);
+    transition-duration: 0.3s;
+    border: none;
+    padding: 4px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    cursor: pointer;
+    font-family: inherit;
+    margin-top: 15px;
+}
+
+button{
+    border-radius: 5px;
+}
+
+/*ANIMACION BOTON*/
+.test:hover{
+    background-color: white;
+    color: #ffd000;
+    border: 1px solid #ffd000;
+}

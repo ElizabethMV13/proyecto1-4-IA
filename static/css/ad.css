@@ -88,4 +88,12 @@
 
 .carousel-item{
     display: inline-block;
+    width: 100%;
+}
+.card-text{
+    color: black;
+    font-size: 18px;
+}
+a{
+    color: blue;
 }

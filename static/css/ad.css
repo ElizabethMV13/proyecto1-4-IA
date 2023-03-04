@@ -33,6 +33,12 @@
     border-radius: 8px;
     margin: 0px 2%;
 }
+.card-contacto{
+    display: inline-block;   
+    background-color: #00c6cf;
+    width: 40%;
+    border-radius: 8px;
+}
 .card-body{
    margin: 30px 20px; 
 }

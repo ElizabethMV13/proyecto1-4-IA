@@ -1,0 +1,81 @@
+.subtitulos{
+    font-size: 50px;
+    color: azure;
+    margin: 3% 0px;
+    text-align: left;
+  }
+
+.inline{
+    display: inline-block;
+    height : 130px;
+    margin: 3% 0px;
+    
+  }
+.text-acerca{
+    color: aliceblue;
+    font-size: 20px;
+    text-align: right;
+    margin: 3% 0px;
+}
+.texto{
+    color: aliceblue;
+    font-size: 19px;
+    text-align: right;
+}
+
+.equipo{
+    width: 100%; 
+}
+.card{
+    display: inline-block;   
+    background-color: #00c6cf;
+    width: 45%;
+    border-radius: 8px;
+    margin: 0px 2%;
+}
+.card-body{
+   margin: 20px 10px; 
+}
+
+.card-especial{
+    display: inline-block;   
+    background-color: #00c6cf;
+    width: 25%;
+    border-radius: 8px;
+    margin: 0px 3%;
+}
+
+.card-title{
+    color: black;
+    font-size: larger;
+}
+
+.activate{    
+    display: block !important;
+}
+
+.objetivo_text{
+    margin-bottom: 12px;
+    text-align:left;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.objetivo{
+    background-color: #00C6CF;
+    color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 80px;
+    width: 800px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 40px #00C6CF;
+}
+
+
+
+.container-permisos{
+    color: #fffffffb;
+    font-size: 18px;
+    text-align: center !important;
+    
+}

@@ -2,7 +2,7 @@ window.onload = function () {
     const $elementosCarousel = document.querySelectorAll(".carousel-item");
     console.log($elementosCarousel)
     //Declarando timpo en el que se tarda en mover
-    const TIEMPO_INTERVALO = 5* 1000;
+    const TIEMPO_INTERVALO = 6* 1000;
     let posicionActual = 0, posicionSiguiente = 1;
     intervalo = setInterval(pasarMargen, TIEMPO_INTERVALO);
   
@@ -33,8 +33,9 @@ window.onload = function () {
             posicionActualAux++;
             posicionSiguienteAux++;
             if ($margenActual == elementoCarousel) {
-                posicionActualAux == 4 ? posicionSiguienteAux = 1 : "";
+                posicionActualAux == 3 ? posicionSiguienteAux = 1 : "";
                 renderizarMargen("carousel-item_" + posicionActualAux, "carousel-item_" + posicionSiguienteAux);
+                console.log("increAA", posicionActualAux, "increSA", posicionSiguienteAux);
               }
           });
       }
